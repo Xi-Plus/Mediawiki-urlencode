@@ -3,12 +3,13 @@
 function mediawikiurlencode($baseurl, $page, $section="") {
 	$replacement = [
 		" " => "_",
-		"“" => "%E2%80%9C",
-		"”" => "%E2%80%9D",
-		"\xE2\x80\x8E" => "",
-		"‧" => "%E2%80%A7",
-		"\"" => "%22"
+		"\xE2\x80\x8E" => ""
 	];
+	$urlencodelist = ['“', '”', '’', '‧', '"'];
+	foreach ($urlencodelist as $char) {
+		$replacement[$char] = urlencode($char);
+	}
+
 	foreach ($replacement as $from => $to) {
 		$page = str_replace($from, $to, $page);
 	}
