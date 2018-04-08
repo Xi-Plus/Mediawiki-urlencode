@@ -5,7 +5,7 @@ function mediawikiurlencode($baseurl, $page, $section="") {
 		" " => "_",
 		"\xE2\x80\x8E" => ""
 	];
-	$urlencodelist = ['“', '”', '’', '‧', '"'];
+	$urlencodelist = ['“', '”', '’', '‧', '"', '…'];
 	foreach ($urlencodelist as $char) {
 		$replacement[$char] = urlencode($char);
 	}
