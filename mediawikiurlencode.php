@@ -3,9 +3,10 @@
 function mediawikiurlencode($baseurl, $page, $section="") {
 	$replacement = [
 		" " => "_",
-		"\xE2\x80\x8E" => ""
+		"\xE2\x80\x8E" => "",
+		"." => "%2E"
 	];
-	$urlencodelist = ['“', '”', '’', '‧', '"', '…', '?', ')'];
+	$urlencodelist = ['“', '”', '’', '‧', '"', '…', '?', ')', ';'];
 	foreach ($urlencodelist as $char) {
 		$replacement[$char] = urlencode($char);
 	}
@@ -19,9 +20,10 @@ function mediawikiurlencode($baseurl, $page, $section="") {
 	if ($section !== "") {
 		$replacement = [
 			" " => "_",
-			"\xE2\x80\x8E" => ""
+			"\xE2\x80\x8E" => "",
+			"." => "%2E"
 		];
-		$urlencodelist = ['“', '”', '…'];
+		$urlencodelist = ['“', '”', '…', ';'];
 		foreach ($urlencodelist as $char) {
 			$replacement[$char] = urlencode($char);
 		}
